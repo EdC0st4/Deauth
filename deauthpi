@@ -15,11 +15,9 @@ sudo ifconfig "$iface"mon up
 
 sudo airodump-ng "$iface"mon
 
-echo ""
 echo "bssid:"
 read 'bssid'
 
-echo ""
 echo "channel:"
 read 'channel'
 
