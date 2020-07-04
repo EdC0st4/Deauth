@@ -1,5 +1,4 @@
 # deauthpi
-Deauthpi is a minimal Denial-of-service attack tool written with bash.
 
 Installation:
 
