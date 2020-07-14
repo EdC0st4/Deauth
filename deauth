@@ -4,7 +4,6 @@ x=0
 while [ $x = 0 ]
 do
 	clear
-	./intro.sh
 	echo ""
 	echo " Options:"
 	echo ""
