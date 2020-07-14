@@ -1,5 +1,7 @@
 #!/bin/bash
 
+iface="wlan0"
+
 x=0
 while [ $x = 0 ]
 do
