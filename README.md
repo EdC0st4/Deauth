@@ -1,4 +1,4 @@
-# deauthpi
+# Deauth Pi
 
 Installation:
 ```
